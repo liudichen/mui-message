@@ -77,7 +77,7 @@ const someFuncOrComponents = () => {
 }
 
 ```
-$\color{red} {注意： 同一应用只需要使用一次MessageBox实例即可。} $
+$\color{red}{**注意： 同一应用只需要使用一次MessageBox实例即可。**}$
 
 
 ### 方法参数
