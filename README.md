@@ -6,13 +6,13 @@ English | [简体中文](https://github.com/liudichen/mui-message/blob/master/RE
   
 </div>
 
-Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), while without using hooks or creating SnackBar components frequently.
+Send messages (Snackbar messages) as convenient as using antd when use MUI(@mui/material), while without using hooks or creating SnackBar components frequently.
 
 ## Install
 
-`mui-message` depends on [@mui/material (^ 5.0.0)](https://github.com/mui/material-ui) and [notistack (^ 2.0.3)](https://github.com/iamhosseindhv/notistack), just a little encapsulation and a little change in the default props. Refer to these two libraries for related props
+`mui-message` depends on [@mui/material (^ 5.0.0)](https://github.com/mui/material-ui) and [notistack (^ 2.0.3)](https://github.com/iamhosseindhv/notistack), just a little encapsulation and a little change in the default props. Refer to these two libraries for related props or the second parameter `option` message method and its sub method.
 
-Based on hooks，so ngeed `react`>=16.8.0.
+Based on hooks，so need `react`>=16.8.0.
 
 install:
 

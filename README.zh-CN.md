@@ -6,13 +6,13 @@
 
 </div>
 
-使用MUI(@mui/material)时像antd一样方便地在应用里发送message（snackbar消息）,而无需频繁使用hooks或创建Snackbar组件。
+使用MUI(@mui/material)时像antd一样方便地在应用里发送message（Snackbar消息）,而无需频繁使用hooks或创建Snackbar组件。
 
 > 本来是直接在本地应用使用，基本没问题，所以打下包发布下，后面方便直接引用，可能有一些问题，比如有时可能会报类似于一个组件实例出现多次的错误，但后面又没报了。Ts不会用,所以暂没没加类型。
 
 ## 安装
 
-`mui-message`依赖于[@mui/material(^5.0.0)](https://github.com/mui/material-ui)及[notistack(^2.0.3)](https://github.com/iamhosseindhv/notistack)，只是简单做了一点封装，改了一点默认props，相关props可参考这2个库.
+`mui-message`依赖于[@mui/material(^5.0.0)](https://github.com/mui/material-ui)及[notistack(^2.0.3)](https://github.com/iamhosseindhv/notistack)，只是简单做了一点封装，改了一点默认props，相关props及`message`方法的第二个参数`option`可参考这2个库.
 
 基于hooks，所以需要`react`>=16.8.0.
 
