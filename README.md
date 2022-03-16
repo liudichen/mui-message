@@ -9,7 +9,7 @@
 
 `mui-message` depends on [@mui/material (^ 5.0.0)](https://github.com/mui/material-ui) and [notistack (^ 2.0.3)](https://github.com/iamhosseindhv/notistack), just a little encapsulation and a little change in the default props. Refer to these two libraries for related props
 
-Based on hooks，so need `react`>=16.8.0.
+Based on hooks，so ngeed `react`>=16.8.0.
 
 install:
 
@@ -65,7 +65,7 @@ const someFuncOrComponents = () => {
   message.success('some error snackbar message');
   message.warning('some warning snackbar message');
 
-  // or destroy all message:
+  // or destroy all messages:
   message.destroy();
 }
 
