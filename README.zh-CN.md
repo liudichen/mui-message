@@ -1,6 +1,9 @@
 # mui-message
 
 <div align="center">
+
+  [English](https://github.com/liudichen/mui-message/blob/main/README.md) | 简体中文
+
   使用MUI(@mui/material)时像antd一样方便地在应用里发送message（snackbar消息）,而无需频繁使用hooks或创建Snackbar组件。
 </div>
 
