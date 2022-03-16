@@ -1,11 +1,12 @@
 # mui-message
 
-English | [简体中文](https://github.com/liudichen/mui-message/blob/main/README.zh-CN.md)
-
 <div align="center"> 
-  Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material) in the application without using hooks or creating snackBar components frequently.
+
+English | [简体中文](https://github.com/liudichen/mui-message/blob/main/README.zh-CN.md)
+  
 </div>
 
+Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material) in the application without using hooks or creating snackBar components frequently.
 
 ## Install
 
