@@ -34,6 +34,8 @@ npm i mui-message
 
 也可以在此基础上进行一定的[自定义](###自定义)。如果需要使用消息实例，如自定义action时，可以利用`messageRef`来获取。
 
+**注意： 同一应用只需要使用一次MessageBox实例即可。**
+
 ### 如何使用
 
 将MessageBox作为1个独立组件挂在较高层级即可，建议放在路由外层，这样就全局可以访问了.
@@ -77,8 +79,6 @@ const someFuncOrComponents = () => {
 }
 
 ```
-$\color{red}{**注意： 同一应用只需要使用一次MessageBox实例即可。**}$
-
 
 ### 方法参数
 
