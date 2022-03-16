@@ -76,7 +76,7 @@ MessageBox.propTypes = {
   /**
    * The action to display. It renders after the message, at the end of the snackbar.
    */
-  action: PropTypes.oneOfType([PropTypes.node,PropTypes.arrayOf(PropTypes.node)]),
+  action: PropTypes.oneOfType([PropTypes.node,PropTypes.func]),
   /**
    * The anchor of the `Snackbar`.
    * On smaller screens, the component grows to occupy all the available width,
