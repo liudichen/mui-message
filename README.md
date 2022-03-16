@@ -31,6 +31,8 @@ Among them, `MessageBox` is the encapsulated `snackbarprovider` and its consumer
 
 You can also [customize](###Customize) on this basis. If you need to use the message instance, such as custom actions, you can use `messageRef` to get it.
 
+**Note: the same application only needs to use the MessageBox instance once.**
+
 ### Use
 
 Just hang the MessageBox as an independent component at a higher level. It is recommended to put it on the outer layer of the router so that it can be accessed globally.
@@ -75,7 +77,6 @@ const someFuncOrComponents = () => {
 
 ```
 
-  $\color{red} {Note: the same application only needs to use the MessageBox instance once.} $
 
 
 ### Method parameters
