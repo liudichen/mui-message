@@ -39,6 +39,8 @@ npm i mui-message
 
 将MessageBox作为1个独立组件挂在较高层级即可，建议放在路由外层，这样就全局可以访问了.
 
+如果你自定义了MUI主题，应该把该组件放在Mui的`ThemeProvider`内部。
+
 ```javascript
 // App.js
 import React from 'react'

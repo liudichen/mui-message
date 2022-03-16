@@ -33,7 +33,9 @@ You can also [customize](###Customize) on this basis. If you need to use the mes
 
 ### Use
 
-Just hang the MessageBox as an independent component at a higher level. It is recommended to put it on the outer layer of the router so that it can be accessed globally
+Just hang the MessageBox as an independent component at a higher level. It is recommended to put it on the outer layer of the router so that it can be accessed globally.
+
+If you customize the Mui theme, you should put the component inside  `ThemeProvider` of Mui.
 
 ```javascript
 // App.js
