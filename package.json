@@ -1,0 +1,103 @@
+{
+  "version": "0.1.0",
+  "name": "mui-message",
+  "author": {
+    "name": "liudichen",
+    "email": "liudichen@foxmail.com",
+    "url": "https://www.iimm.ink"
+  },
+  "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material) in the application without using hooks or creating snackBar components frequently.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/mui-message.esm.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "keywords": [
+    "mui",
+    "material-ui",
+    "antd",
+    "snackbar",
+    "notistack",
+    "iimm",
+    "liudichen",
+    "notification",
+    "react",
+    "@mui/material"
+  ],
+  "repository": {
+    "url": "",
+    "type": "git"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build --transpileOnly --entry ./src/index.js",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.0",
+    "react": "^16.8.0 || ^17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "size-limit": [
+    {
+      "path": "dist/mui-message.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mui-message.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-react": "^7.16.7",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.0",
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/react": "^17.0.40",
+    "@types/react-dom": "^17.0.13",
+    "husky": "^7.0.4",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^3.9.10"
+  },
+  "dependencies": {
+    "notistack": "^2.0.3",
+    "prop-types": "^15.8.1",
+    "react-device-detect": "^2.1.2"
+  }
+}
