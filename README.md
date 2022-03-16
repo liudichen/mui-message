@@ -2,11 +2,11 @@
 
 <div align="center"> 
 
-English | [简体中文](https://github.com/liudichen/mui-message/blob/main/README.zh-CN.md)
+English | [简体中文](https://github.com/liudichen/mui-message/blob/master/README.zh-CN.md)
   
 </div>
 
-Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material) in the application without using hooks or creating snackBar components frequently.
+Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), while without using hooks or creating SnackBar components frequently.
 
 ## Install
 
@@ -54,7 +54,6 @@ const App = () => {
 }
 ```
 
-在需要发送消息的地方，可以这样使用
 It can be used to send messages like this:
 
 ```javascript

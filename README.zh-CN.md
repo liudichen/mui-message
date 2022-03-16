@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  [English](https://github.com/liudichen/mui-message/blob/main/README.md) | 简体中文
+  [English](https://github.com/liudichen/mui-message/blob/master/README.md) | 简体中文
 
 </div>
 
