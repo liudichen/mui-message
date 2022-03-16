@@ -31,7 +31,7 @@ Among them, `MessageBox` is the encapsulated `snackbarprovider` and its consumer
 
 You can also [customize](###Customize) on this basis. If you need to use the message instance, such as custom actions, you can use `messageRef` to get it.
 
-**Note: the same application only needs to use the MessageBox instance once.**
+**Note: You only needs to use the MessageBox component once at one application.**
 
 ### Use
 
