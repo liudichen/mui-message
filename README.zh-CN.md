@@ -77,9 +77,7 @@ const someFuncOrComponents = () => {
 }
 
 ```
-$\color{red} {
-  **注意： 同一应用只需要使用一次MessageBox实例即可。**
-} $
+$\color{red} {注意： 同一应用只需要使用一次MessageBox实例即可。} $
 
 
 ### 方法参数
@@ -131,7 +129,7 @@ MessageBox.defaultProps = {
 MessageBox及 message的option参数支持的props或配置项均与notistack相同。
 
 <details>
-  <summary>部分如下：</summary>
+  <summary><b>可配置项部分如下：</b></summary>
 
 ```javascript
 MessageBox.propTypes = {
@@ -161,7 +159,7 @@ MessageBox.propTypes = {
   /**
    * The action to display. It renders after the message, at the end of the snackbar.
    */
-  action: PropTypes.oneOfType([PropTypes.node,PropTypes.arrayOf(PropTypes.node)]),
+  action: PropTypes.oneOfType([PropTypes.node,PropTypes.func]),
   /**
    * The anchor of the `Snackbar`.
    * On smaller screens, the component grows to occupy all the available width,

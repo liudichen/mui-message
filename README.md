@@ -35,7 +35,7 @@ You can also [customize](###Customize) on this basis. If you need to use the mes
 
 Just hang the MessageBox as an independent component at a higher level. It is recommended to put it on the outer layer of the router so that it can be accessed globally.
 
-If you customize the Mui theme, you should put the component inside  `ThemeProvider` of Mui.
+If you need customize the Mui theme, you should put the component inside  `ThemeProvider` of Mui.
 
 ```javascript
 // App.js
@@ -74,9 +74,8 @@ const someFuncOrComponents = () => {
 }
 
 ```
-$\color{red} {
-  **Note: the same application only needs to use the MessageBox instance once.**
-} $
+
+  $\color{red} {Note: the same application only needs to use the MessageBox instance once.} $
 
 
 ### Method parameters
@@ -129,7 +128,7 @@ MessageBox及 message的option参数支持的props或配置项均与notistack相
 The props of MessageBox or configuration items of message (and its sub methods) supported by the option parameters  are the same as notistack.
 
 <details>
-  <summary>props or options items:</summary>
+  <summary><b>props or options items:</b></summary>
 
 ```javascript
 MessageBox.propTypes = {
@@ -159,7 +158,7 @@ MessageBox.propTypes = {
   /**
    * The action to display. It renders after the message, at the end of the snackbar.
    */
-  action: PropTypes.oneOfType([PropTypes.node,PropTypes.arrayOf(PropTypes.node)]),
+  action: PropTypes.oneOfType([PropTypes.node,PropTypes.func]),
   /**
    * The anchor of the `Snackbar`.
    * On smaller screens, the component grows to occupy all the available width,
