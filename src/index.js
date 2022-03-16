@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import MessageContextConsumer from './MessageContextConsumer';
 
 
-const messageRef = createRef();
+const messageRef = React.createRef();
 
 const MessageBox = React.forwardRef((props,ref)=>{
   const { children, ...restProps } = props;
