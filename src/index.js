@@ -1,27 +1,61 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
-import { SnackbarProvider,useSnackbar } from 'notistack';
+import { SnackbarProvider } from 'notistack';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import MessageContextConsumer from './MessageContextConsumer';
+const MessageContext = React.createContext();
 
+const MessageProvider = ({message,children}) => {
+  return (
+    <MessageContext.Provider value={ message } >
+      { children }
+    </MessageContext.Provider>
+  );
+};
+
+const useMessage = () => React.useContext(MessageContext);
 
 const messageRef = React.createRef();
 
-const MessageBox = React.forwardRef((props,ref)=>{
+const message = (message, option = {}) => {
+  messageRef.current?.enqueueSnackbar(message, { variant: 'default', ...(option || {}) });
+};
+
+const info = (message, option = {}) => {
+  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'info' });
+};
+
+const warning = (message, option = {}) => {
+  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'warning' });
+};
+
+const success = (message, option = {}) => {
+  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'success' });
+};
+
+const error = (message, option = {}) => {
+  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'error' });
+};
+const destroy = () => messageRef.current?.closeSnackbar();
+
+message.info = info;
+message.success = success;
+message.warning = warning;
+message.error = error;
+message.destroy = destroy;
+
+const MessageBox = (props) => {
   const { children, ...restProps } = props;
-  React.useImperativeHandle(ref,() => messageRef.current);
   return (
-    <SnackbarProvider
-      { ...restProps }
-    >
-      <MessageContextConsumer ref={messageRef} />
-      { children }
+    <SnackbarProvider {...restProps} ref={messageRef}>
+      <MessageProvider message={message}>
+        {children}
+      </MessageProvider>
     </SnackbarProvider>
   );
-})
+};
 
 MessageBox.defaultProps = {
   maxSnack:3,
@@ -179,22 +213,9 @@ MessageBox.propTypes = {
   variant: PropTypes.oneOf(['default','error','warning','success','info']),
 };
 
-const sendMsg = (ref, variant) => (msg, option = {}) => {
-  ref.current?.enqueueSnackbar(msg, variant ? { ...option, variant } : { variant: 'default', ...option });
-};
-const destroyMsg = (ref) => () => ref.current?.closeSnackbar();
-
-const message = sendMsg(messageRef);
-
-message.info = sendMsg(messageRef, 'info');
-message.success = sendMsg(messageRef, 'success');
-message.warning = sendMsg(messageRef, 'warning');
-message.error = sendMsg(messageRef, 'error');
-message.destroy = destroyMsg(messageRef);
-
 export {
   messageRef,
   message,
   MessageBox,
-  useSnackbar,
+  useMessage
 };
