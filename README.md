@@ -23,9 +23,9 @@ npm i mui-message
 
 ## How to use
 
-After installation, it can be used in the project. There are mainly three exported elements: ` messageRef`，`message`, `MessageBox` and a hook `useMessage`
+There are mainly four exported elements: ` messageRef`，`message`, `MessageBox` and a hook `useMessage`
 
-Among them, `MessageBox` is the component encapsulated `snackbarprovider` and `MessageBoxProvider` .This component should be placed at a higher level of the application (It is recommended to put it outside the router). Although it supports children, there is no need to take other components as its sub components in fact. However, if it has sub components, you can use `useMessage` hook in the sub components to get a message instance which is as same as `message` that exported directly from `mui-message`.
+`MessageBox` is the component encapsulated `snackbarprovider` and `MessageBoxProvider` .This component should be placed at a higher level of the application (It is recommended to put it outside the router). Although it supports children, there is no need to take other components as its sub components in fact. However, if it has sub components, you can use `useMessage` hook in the sub components to get a message instance which is as same as `message` that exported directly from `mui-message`.
 
 `message` and its sub methods(`info`、`success`、`error`、`warning`) are the methods of sending messages.
 
@@ -35,7 +35,7 @@ You can also [customize](##Customize) on this basis. If you need to use the mess
 
 Just hang the MessageBox as an independent component at a higher level. It is recommended to put it on the outer layer of the router so that it can be accessed globally.
 
-If you need customize the Mui theme, you should put the component inside  `ThemeProvider` of Mui
+If you have customized the Mui theme globally, you should put the component inside root `ThemeProvider` component.
 
 ### Use directly
 
@@ -64,7 +64,7 @@ It can be used to send messages like this:
 // anywhere.js
 import { message } from 'mui-message'
 
-const someFuncOrComponents = () => {
+const AnyFuncOrComponent = () => {
 
   // send message like:
   message('some default snackbar message');
@@ -91,9 +91,9 @@ const App = () => {
     return (
       <>
         <MessageBox >
-        <Router>
-          // 其他内容
-        </Router>
+          <Router>
+            // app content
+          </Router>
         </MessageBox>
       <>
     );
@@ -106,7 +106,7 @@ In its sub components:
 // anyComponet inside MessageBox.js
 import { useMessage } from 'mui-message'
 
-const someFuncOrComponents = () => {
+const AnySubComponent = () => {
   const message = useMessage();
   // send message like:
   message('some default snackbar message');
@@ -119,11 +119,11 @@ const someFuncOrComponents = () => {
 
 ## Method parameters
 
-`message` and `message.info` (and .`error`/`warning`/`success` sub methods) method actually calls `enqueueSnackbar` in `notistack`,and `message.destroy` calls `closeSnackbar`, so its parameters are exactly the same as notistack.
+`message` and `message.info` (and .`error`/`warning`/`success` sub methods) method actually calls `enqueueSnackbar` in `notistack`,and `message.destroy` calls `closeSnackbar`, so its parameters are exactly the same as `notistack`.
 
-`message`,`message.info`,`message.error`,`message.success` and `message.warning` are methods to genarate a snackbar message.
+`message`,`message.info`,`message.error`,`message.success` and `message.warning` are methods to generate a snackbar message.
 
-They accept two parameters: the first parameter is the message content while the second parameter is optional and can be used to specify parameters such as `variant`,`anchorOrigin`(message location),`autoHideDuration`(automatic shutdown waiting time) and so on. In fact, above methods only specify the corresponding `variant`.`message` corresponds to `variant` is `'default'`, and` variant` of other methods is its method name:
+They accept two parameters: the first parameter is the message content while the second parameter is optional and can be used to specify parameters such as `variant`,`anchorOrigin`(message location),`autoHideDuration`(automatic shutdown waiting time) and so on. In fact, above methods only specify the corresponding `variant`. That is, `message` corresponds to `variant` = `'default'`, and` variant` of other methods = its method name:
 
 ```javascript
   // interface:
@@ -134,7 +134,7 @@ They accept two parameters: the first parameter is the message content while the
   message.info('this is a variant=info message and before autohide its duration is 5 seconds',{autoHideDuration:5000});
 ```
 
-`message.destroy` method has no parameters, and it can destory all snackbar messages:
+`message.destroy` method has no parameters, and it can destroy all snackbar messages:
 
 ```javascript
   // interface:
@@ -144,15 +144,15 @@ They accept two parameters: the first parameter is the message content while the
   message.destroy();
 ```
 
-The configurable items of props of MessageBox and option of message are shown below: [props-and-option](##props-and-option)
+The configurable items of props of MessageBox and option of message methods are shown below: 
 
-## props-and-option
+## Props and option
 
-MessageBox's props, option parameter of message and its sub methods are as same as those of notistack. You can refer to [documentation of notistack](https://iamhosseindhv.com/notistack/api)
+Props of `MessageBox`, option parameter of message and its sub methods are as same as those of notistack. You can refer to [documentation of notistack](https://iamhosseindhv.com/notistack/api)
 
 ### defaultProps of MessagBox
 
-The default props of `MessageBox` are as follows. You can overwrite them by passing custom props to `MessageBox`.
+The default props of `MessageBox` are as follows. You can overwrite them by passing custom props to the `MessageBox` component.
 
 ```javascript
 MessageBox.defaultProps = {
@@ -175,7 +175,7 @@ MessageBox.defaultProps = {
 };
 ```
 
-### configurable items of props and option
+### Configurable items of props or option
 
 MessageBox及 message的option参数支持的props或配置项均与notistack相同。
 The props of MessageBox or configuration items of message (and its sub methods) supported by the option parameters  are the same as notistack.
@@ -344,7 +344,7 @@ Use message, message.info and other methods temporarily configure a message:
 
 ## Ref
 
-When need to customize actions and use the snackbar instance, you can get it through the exported `messageRef` ,so you can get methods and attributes from 'notistack', such as `closeSnackbar`、`enqueueSnackbar` :
+When want to customize `action` prop and use the SnackbarContext instance, you can get it through the exported `messageRef`.By it you can get methods and attributes from 'notistack', such as `closeSnackbar`、`enqueueSnackbar` :
 
 ```javascript
   import ( messageRef, MessagBox ) from 'mui-message'

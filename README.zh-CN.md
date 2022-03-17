@@ -39,7 +39,7 @@ npm i mui-message
 
 使用时将MessageBox作为1个独立组件挂在较高层级即可，建议放在路由外层，这样就全局可以访问了.
 
-如果你自定义了MUI主题，应该把该组件放在Mui的`ThemeProvider`内部。
+如果你自定义了全局MUI主题，应该把该组件放在根`ThemeProvider`组件内部。
 
 ### 直接使用
 
@@ -68,7 +68,7 @@ const App = () => {
 // anywhere.js
 import { message } from 'mui-message'
 
-const someFuncOrComponents = () => {
+const AnyFuncOrComponent = () => {
 
   // send message like:
   message('some default snackbar message');
@@ -111,7 +111,7 @@ const App = () => {
 // anyComponet inside MessageBox.js
 import { useMessage } from 'mui-message'
 
-const someFuncOrComponents = () => {
+const AnySubComponent = () => {
   const message = useMessage();
   // send message like:
   message('some default snackbar message');
@@ -151,9 +151,9 @@ const someFuncOrComponents = () => {
   message.destroy();
 ```
 
-`MessageBox`的props 及 `message`的option 可配置项见下面的 [props及option](##props及option)
+`MessageBox`的props 及 `message`的option 可配置项见[下面](##Props及option).
 
-## props及option
+## Props及option
 
 MessageBox的props 及 message及其子方法的option参数与notistack相同,可以参考[notistack的文档](https://iamhosseindhv.com/notistack/api)。
 
@@ -350,7 +350,7 @@ MessageBox.propTypes = {
 
 ## 使用Ref
 
-在需自定义action等需要使用snackbar实例时可以通过导出的`messageRef`获取,可以获取到`closeSnackbar`、`enqueueSnackbar`等来自`notistack`的一些方法和属性:
+在需自定义`action` prop 等需要使用snackbar实例时可以通过导出的`messageRef`获取,可以获取到`closeSnackbar`、`enqueueSnackbar`等来自`notistack`的一些方法和属性:
 
 ```javascript
   import ( messageRef, MessagBox ) from 'mui-message'
