@@ -177,7 +177,6 @@ MessageBox.defaultProps = {
 
 ### Configurable items of props or option
 
-MessageBox及 message的option参数支持的props或配置项均与notistack相同。
 The props of MessageBox or configuration items of message (and its sub methods) supported by the option parameters  are the same as notistack.
 
 <details>
