@@ -6,7 +6,7 @@ English | [简体中文](https://github.com/liudichen/mui-message/blob/master/RE
   
 </div>
 
-Send messages (Snackbar messages) as convenient as using antd when use MUI(@mui/material), while without using hooks or creating SnackBar components frequently.
+Send messages (Snackbar messages) as convenient as using antd([ant-design](https://github.com/ant-design/ant-design/)) when use MUI([@mui/material](https://github.com/mui/material-ui)), while without using hooks or creating SnackBar components frequently.
 
 ## Install
 
