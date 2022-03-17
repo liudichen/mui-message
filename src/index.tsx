@@ -1,43 +1,26 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
-import { SnackbarProvider } from 'notistack';
+import { SnackbarProvider, OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { MessageContext, MessageBoxProps } from './interface';
 
-const MessageContext = React.createContext();
+import useMessage from './useMessage';
+import MessageProvider from './MessageProvider';
 
-const MessageProvider = ({message,children}) => {
-  return (
-    <MessageContext.Provider value={ message } >
-      { children }
-    </MessageContext.Provider>
-  );
-};
+const messageRef = React.createRef<MessageContext>();
 
-const useMessage = () => React.useContext(MessageContext);
+const message = (message: SnackbarMessage, option ?:OptionsObject) =>  messageRef.current?.enqueueSnackbar(message, { variant: 'default', ...(option || {}) });
 
-const messageRef = React.createRef();
+const info = (message: SnackbarMessage, option ?:OptionsObject) => messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'info' });
 
-const message = (message, option = {}) => {
-  messageRef.current?.enqueueSnackbar(message, { variant: 'default', ...(option || {}) });
-};
+const warning = (message: SnackbarMessage, option ?:OptionsObject) => messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'warning' });
 
-const info = (message, option = {}) => {
-  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'info' });
-};
+const success = (message: SnackbarMessage, option ?:OptionsObject) => messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'success' });
 
-const warning = (message, option = {}) => {
-  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'warning' });
-};
+const error = (message: SnackbarMessage, option ?:OptionsObject) => messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'error' });
 
-const success = (message, option = {}) => {
-  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'success' });
-};
-
-const error = (message, option = {}) => {
-  messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: 'error' });
-};
 const destroy = () => messageRef.current?.closeSnackbar();
 
 message.info = info;
@@ -46,9 +29,10 @@ message.warning = warning;
 message.error = error;
 message.destroy = destroy;
 
-const MessageBox = (props) => {
+const MessageBox: React.FC<MessageBoxProps> = (props: MessageBoxProps) => {
   const { children, ...restProps } = props;
   return (
+    // @ts-ignore
     <SnackbarProvider {...restProps} ref={messageRef}>
       <MessageProvider message={message}>
         {children}
@@ -60,12 +44,12 @@ const MessageBox = (props) => {
 MessageBox.defaultProps = {
   maxSnack:3,
   autoHideDuration: 2000,
-  dense: isMobile,
+  dense: !!isMobile,
   anchorOrigin:{
     vertical: 'top',
     horizontal: 'center',
   },
-  action: (key) => {
+  action: (key?: SnackbarKey) => {
     return (
         <IconButton key='close' aria-label='Close' color='inherit' onClick={() => {
           messageRef.current?.closeSnackbar(key);
@@ -99,6 +83,7 @@ MessageBox.propTypes = {
   /**
    * Valid and exist HTML Node element, used to target `ReactDOM.createPortal`
    */
+  // @ts-ignore
   domRoot: PropTypes.elementType,
   /**
    * Override or extend the styles applied to the container component or Snackbars.
@@ -113,10 +98,11 @@ MessageBox.propTypes = {
    * On smaller screens, the component grows to occupy all the available width,
    * the horizontal alignment is ignored.
    * @default { vertical: 'top', horizontal: 'center' }
-   */
+   */  
+  // @ts-ignore
   anchorOrigin: PropTypes.shape({
-    horizontal: PropTypes.oneOf(['center', 'left', 'right']).isRequired,
-    vertical: PropTypes.oneOf(['bottom', 'top']).isRequired,
+    horizontal: PropTypes.oneOf(['center', 'left', 'right']),
+    vertical: PropTypes.oneOf(['bottom', 'top']),
   }),
   /**
    * The number of milliseconds to wait before automatically calling the
@@ -147,6 +133,7 @@ MessageBox.propTypes = {
    * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
    * @default Slide
    */
+  // @ts-ignore
   TransitionComponent: PropTypes.elementType,
   /**
    * The duration for the transition, in milliseconds.
@@ -156,6 +143,7 @@ MessageBox.propTypes = {
    *   exit: 195,
    * }
    */
+  // @ts-ignore
   transitionDuration: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
