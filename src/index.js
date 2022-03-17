@@ -78,12 +78,9 @@ MessageBox.defaultProps = {
 
 MessageBox.propTypes = {
   /**
-   * In fact,we do not need children at all.
+   * children component(s)
    */
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]),
+  children: PropTypes.node,
   /**
    * Denser margins for snackbars. Recommended to be used on mobile devices.
    * @default isMobile exported from 'react-device-detect'
