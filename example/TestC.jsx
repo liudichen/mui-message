@@ -3,15 +3,18 @@
  * @Author: 柳涤尘 https://www.iimm.ink
  * @LastEditors: 柳涤尘 liudichen@foxmail.com
  * @Date: 2022-03-17 11:17:52
- * @LastEditTime: 2022-03-17 11:41:44
+ * @LastEditTime: 2022-03-17 12:33:52
  */
 import React from 'react'
 import { Button } from "@mui/material";
-import {message,useMessage} from '../.'
+import {message, useMessage, messageRef} from '../.'
 
 const TestOut = ()=>  {
   let i=10;
-  const handleSend = () => message.info(`outerMsg-${i++}`)
+  const handleSend = () => {
+    message.info(`outerMsg-${i++}`);
+    console.log('refO',messageRef);
+  }
   const handleDestroy=()=> message.destroy()
   return (
     <div>

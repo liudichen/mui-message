@@ -8,7 +8,7 @@
 
 使用MUI(@mui/material)时像antd一样方便地在应用里发送message（Snackbar消息）,而无需频繁使用hooks或创建Snackbar组件。
 
-> 本来是直接在本地应用使用，基本没问题，所以打下包发布下，后面方便直接引用，可能有一些问题，比如有时可能会报类似于一个组件实例出现多次的错误，但后面又没报了。Ts不会用,所以暂没没加类型。
+> 本来是直接在本地应用使用，基本没问题，所以打下包发布下，后面方便直接引用，可能有一些问题。TypeScript不会用,参考着其他包添加了下类型，可能会存在一些问题。
 
 ## 安装
 
@@ -27,13 +27,13 @@ npm i mui-message
 
 安装完毕后即可在项目里使用了，里面主要有4个导出的元素：`messageRef`、`message`、`MessageBox`、`useMessage`
 
-其中`MessageBox`是封装好的`SnackbarProvider`及 `MessageProvider`，
-该组件放置到应用的较高层级(建议放在路由外边)。虽然其支持children，但实际可以不需要将其他组件作为它的子组件。如果其他组件作为子组件，则可在子组件中使用`useMessage` hook，可以获取到`message`，与从`mui-message`导出的 `message` 是一致的。
+其中`MessageBox`是封装好的`SnackbarProvider`及 `MessageProvider`组件，
+该组件需要放置到项目的较高层级(建议放在路由外边)。虽然其支持children，但实际可以不需要将其他组件作为它的子组件。如果其他组件作为子组件，则可在子组件中使用`useMessage` hook，可以获取到`message`实例，该实例与从`mui-message`直接导出的 `message` 是一致的。
 
 `message`及其子方法(`info`、`success`、`error`、`warning`)是发送消息的方法。
 `message.destroy`方法可以用来销毁所有消息条。
 
-也可以在此基础上进行一定的[自定义](###自定义)。如果需要使用消息实例，如自定义action时，可以利用`messageRef`来获取。
+也可以在此基础上进行一定的[自定义](##自定义)。如果需要使用消息实例，如自定义action时，可以利用[`messageRef`](##使用Ref)来获取。
 
 **注意： 同一应用只需要使用一次MessageBox组件即可。**
 
@@ -74,7 +74,7 @@ const someFuncOrComponents = () => {
   message('some default snackbar message');
   message.info('some info snackbar message');
   message.error('some error snackbar message');
-  message.success('some error snackbar message');
+  message.success('some success snackbar message');
   message.warning('some warning snackbar message');
 
   // or destroy all message:
@@ -108,7 +108,7 @@ const App = () => {
 在需要发送消息的地方(应处于`MessagBox`内部)，可以这样使用：
 
 ```javascript
-// anywhere.js
+// anyComponet inside MessageBox.js
 import { useMessage } from 'mui-message'
 
 const someFuncOrComponents = () => {
@@ -116,9 +116,6 @@ const someFuncOrComponents = () => {
   // send message like:
   message('some default snackbar message');
   message.info('some info snackbar message');
-  message.error('some error snackbar message');
-  message.success('some error snackbar message');
-  message.warning('some warning snackbar message');
 
   // or destroy all message:
   message.destroy();
@@ -126,11 +123,11 @@ const someFuncOrComponents = () => {
 
 ```
 
-### 方法参数
+## 方法参数
 
 `message`及`message.info`(及`error`/`warning`/`success`子方法)方法实际调用的是`notistack`里的`enqueueSnackbar`，`message.destroy`调用的是`closeSnackbar`，所以其参数完全相同.
 
-`message`、`message.info`、`message.error`、`message.success`、`message.warning` 为生成一条snackbar消息的方法，如果数量当前数量超出maxSnack数量，会进入队列。
+`message`、`message.info`、`message.error`、`message.success`、`message.warning` 为生成一条snackbar消息的方法，如果当前总数量超出maxSnack数量，会进入队列。
 
 接受2个参数：第1个参数为消息内容。第2个参数为可选的，可以用来指定`variant`、`anchorOrigin`(消息位置)、`autoHideDuration`(自动关闭等待时间)等参数。以上几个方法实际都只是指定了相应的`variant`，
 其中`message`对应 variant='default'，其他方法为variant=其方法名：
@@ -327,11 +324,11 @@ MessageBox.propTypes = {
 </details>
 
 
-### 自定义
+## 自定义
 
 消息的默认配置可以直接通过给`MessageBox`组件传递相关props来直接配置:
 
-#### 通过MessagBox进行全局配置
+### 通过MessagBox进行全局配置
 
 通过MessageBox的props可以进行全局配置，如：
 
@@ -341,9 +338,9 @@ MessageBox.propTypes = {
     { ...otherProps }
   />
 ```
-如果需要使用SnackbarContext实例(比如自定义action时),可通过[`messageRef`](###使用Ref)获取。
+如果需要使用SnackbarContext实例(比如自定义action时),可通过[`messageRef`](##使用Ref)获取。
 
-#### option临时配置
+### option临时配置
 
 也可在使用message、message.info等方法的option临时配置一条消息.
 
@@ -351,9 +348,9 @@ MessageBox.propTypes = {
   message.error('something is error',{ autoHideDuration:5000, });
 ```
 
-### 使用Ref
+## 使用Ref
 
-在需自定义action等需要使用snackbar实例时可以通过导出的`messageRef`获取:
+在需自定义action等需要使用snackbar实例时可以通过导出的`messageRef`获取,可以获取到`closeSnackbar`、`enqueueSnackbar`等来自`notistack`的一些方法和属性:
 
 ```javascript
   import ( messageRef, MessagBox ) from 'mui-message'
