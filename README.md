@@ -6,11 +6,11 @@ English | [简体中文](https://github.com/liudichen/mui-message/blob/master/RE
   
 </div>
 
-Send messages (Snackbar messages) as convenient as using antd([ant-design](https://github.com/ant-design/ant-design/)) when use MUI([@mui/material](https://github.com/mui/material-ui)), while without using hooks or creating SnackBar components frequently.
+Send messages (Snackbar messages) as convenient as using antd([ant-design](https://github.com/ant-design/ant-design/)) when use MUI([@mui/material](https://github.com/mui/material-ui)), without using hooks or creating SnackBar components frequently.
 
 ## Install
 
-`mui-message` depends on [@mui/material (^ 5.0.0)](https://github.com/mui/material-ui) and [notistack (^ 2.0.3)](https://github.com/iamhosseindhv/notistack), just a little encapsulation and a little change in the default props. Refer to these two libraries for related props or the second parameter `option` message method and its sub method.Or directly view [documentation of notistack](https://iamhosseindhv.com/notistack/api).
+`mui-message` depends on [@mui/material (^ 5.0.0)](https://github.com/mui/material-ui) and [notistack (^ 2.0.3)](https://github.com/iamhosseindhv/notistack), just a little encapsulation and a little change in the default props. Refer to these two libraries for related props of `MessageBox` or the second parameter `option` of message method and its sub methods.Or directly view [documentation of notistack](https://iamhosseindhv.com/notistack/api).
 
 Based on hooks，so need `react`>=16.8.0.
 

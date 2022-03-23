@@ -6,7 +6,7 @@
     "email": "liudichen@foxmail.com",
     "url": "https://www.iimm.ink"
   },
-  "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), while without using hooks or creating Snackbar components frequently.",
+  "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), without using hooks or creating Snackbar components frequently.",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
