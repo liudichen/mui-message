@@ -5,5 +5,6 @@ export default defineConfig({
   cjs:{
     platform:'browser',
   },
-  // prebundle: {},
+  prebundle: {},
+  extraBabelPresets: ["@babel/preset-react"],
 });

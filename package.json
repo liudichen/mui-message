@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "mui-message",
   "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), without using hooks or creating Snackbar components frequently.",
   "main": "dist/index.js",
