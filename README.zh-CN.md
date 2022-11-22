@@ -191,9 +191,19 @@ MessageBox及 message的option参数支持的props或配置项均与notistack相
 
 ```javascript
 MessageBox.propTypes = {
+  /** responsive for dense?根据宽度响应式设置dense属性?与breakpoint配合使用 
+   * @default true
+  */
+  responsive: PropTypes.boolean,
+  /** breakpoint of responsive for dense 
+   * @default 'md'
+  */
+  breakpoint: Proptypes.oneOfType([
+    PropTypes.oneOf(['xs' , 'sm' , 'md' , 'lg' , 'xl']),
+    PropTypes.number,
+  ]),
   /**
    * Denser margins for snackbars. Recommended to be used on mobile devices.
-   * @default isMobile exported from 'react-device-detect'
    */
   dense: PropTypes.bool,
   /**
