@@ -1,15 +1,18 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "mui-message",
   "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), without using hooks or creating Snackbar components frequently.",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/mui-message.esm.js",
   "scripts": {
-    "dev": "father dev",
-    "build": "father build",
-    "build:deps": "father prebundle",
-    "prepublishOnly": "father doctor && npm run build"
+    "start": "tsdx watch",
+    "build": "tsdx build --transpileOnly --entry ./src/index.tsx",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
   "keywords": [
     "mui",
@@ -36,16 +39,26 @@
   },
   "license": "MIT",
   "files": [
-    "dist",
-    "compiled"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
+  "size-limit": [
+    {
+      "path": "dist/mui-message.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mui-message.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "peerDependencies": {
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
-    "@mui/material": "^5.0.0",
+    "@mui/icons-material": "^5.10.0",
+    "@mui/material": "^5.10.0",
     "react": "^16.8.0 || ^17.0.2 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.2 || ^18.0.0"
   },
@@ -65,10 +78,12 @@
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-react": "^7.18.6",
+    "@babel/runtime": "^7.20.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/jest": "^29.2.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
@@ -77,10 +92,13 @@
     "eslint": "^8.27.0",
     "eslint-config-egg": "^12.1.0",
     "eslint-plugin-react": "^7.31.10",
-    "father": "^4.1.0",
+    "husky": "^7.0.4",
+    "parcel": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.56.1",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
