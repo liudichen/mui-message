@@ -1,5 +1,8 @@
 # mui-message
 
+[![NPM version](https://img.shields.io/npm/v/mui-message.svg?style=flat)](https://npmjs.org/package/mui-message)
+[![NPM downloads](http://img.shields.io/npm/dm/mui-message.svg?style=flat)](https://npmjs.org/package/mui-message)
+
 <div align="center"> 
 
 English | [简体中文](https://github.com/liudichen/mui-message/blob/master/README.zh-CN.md)
@@ -177,7 +180,7 @@ MessageBox.defaultProps = {
 
 ### Configurable items of props or option
 
-The props of MessageBox or configuration items of message (and its sub methods) supported by the option parameters  are the same as notistack.
+The props of MessageBox or configuration items of message (and its sub methods) supported by the option parameters(exclude responsive and breakpoint, which are customized and can only be used from props of MessageBox)  are the same as notistack.
 
 <details>
   <summary><b>props or options items:</b></summary>

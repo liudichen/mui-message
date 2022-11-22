@@ -1,5 +1,8 @@
 # mui-message
 
+[![NPM version](https://img.shields.io/npm/v/mui-message.svg?style=flat)](https://npmjs.org/package/mui-message)
+[![NPM downloads](http://img.shields.io/npm/dm/mui-message.svg?style=flat)](https://npmjs.org/package/mui-message)
+
 <div align="center">
 
   [English](https://github.com/liudichen/mui-message/blob/master/README.md) | 简体中文
@@ -184,7 +187,7 @@ MessageBox.defaultProps = {
 
 ### props及option可配置项
 
-MessageBox及 message的option参数支持的props或配置项均与notistack相同。
+MessageBox及 message的option参数支持的props或配置项(除了responsive和breapoint，这2个是自定义的，只能用于props)均与notistack相同。
 
 <details>
   <summary><b>可配置项部分如下：</b></summary>
