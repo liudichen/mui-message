@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "strict": true,
+    // "strict": true,
     "declaration": true,
     "skipLibCheck": true,
-    // "allowJs": true,
+    "allowJs": true,
     "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./"
   },
   "exclude": [
