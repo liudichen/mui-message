@@ -1,7 +1,5 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import MessageContext from './MessageContext';
+import { MessageBoxContext } from "./MessageContext";
 
-const useMessage = () => useContext(MessageContext);
-
-export default useMessage;
+export const useMessage = () => useContext(MessageBoxContext);

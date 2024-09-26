@@ -1,18 +1,14 @@
 {
-  "version": "1.0.4",
+  "version": "1.1.0",
   "name": "mui-message",
   "description": "Send messages (snackBar messages) as convenient as using antd when use MUI(@mui/material), without using hooks or creating Snackbar components frequently.",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/mui-message.esm.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build --transpileOnly --entry ./src/index.tsx",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "dev": "father dev",
+    "build": "father build",
+    "build:deps": "father prebundle",
+    "prepublishOnly": "father doctor && npm run build"
   },
   "keywords": [
     "mui",
@@ -44,23 +40,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "size-limit": [
-    {
-      "path": "dist/mui-message.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/mui-message.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "peerDependencies": {
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "@mui/icons-material": "^5.10.0",
     "@mui/material": "^5.10.0",
-    "react": "^16.8.0 || ^17.0.2 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.2 || ^18.0.0"
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "repository": {
     "url": "https://github.com/liudichen/mui-message",
@@ -75,35 +61,18 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/eslint-parser": "^7.24.5",
-    "@babel/preset-react": "^7.24.1",
-    "@babel/runtime": "^7.24.5",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
-    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.57.0",
-    "eslint-config-egg": "^12.3.1",
-    "eslint-plugin-react": "^7.34.1",
-    "husky": "^7.0.4",
-    "parcel": "^2.12.0",
+    "father": "^4.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "size-limit": "^7.0.8",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.6.2",
     "typescript": "^4.9.5"
   },
   "dependencies": {
     "notistack": "^2.0.8"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }

@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    // "strict": true,
+    "lib": [
+      "DOM",
+      "ES2018",
+    ],
+    "jsx": "react-jsx",
+    "strict": false,
     "declaration": true,
     "skipLibCheck": true,
-    "allowJs": true,
     "esModuleInterop": true,
-    "moduleResolution": "NodeNext",
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "./"
   },
   "exclude": [

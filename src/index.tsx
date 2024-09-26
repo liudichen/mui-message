@@ -1,28 +1,27 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from "react";
-import { SnackbarProvider, OptionsObject, SnackbarKey, SnackbarMessage } from "notistack";
+import { createRef, type FC } from "react";
+import { SnackbarProvider, SnackbarKey, SnackbarMessage } from "notistack";
 import { IconButton, useTheme, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { MessageContext, MessageBoxProps } from "./interface";
-import useMessage from "./useMessage";
-import MessageProvider from "./MessageProvider";
+import { useMessage } from "./useMessage";
+import { MessageProvider } from "./MessageProvider";
+import type { MessageContext, MessageBoxProps, MessageOptions } from "./interface";
 
-const messageRef = React.createRef<MessageContext>();
+const messageRef = createRef<MessageContext>();
 
-const message = (message: SnackbarMessage, option?: OptionsObject) =>
+const message = (message: SnackbarMessage, option?: MessageOptions) =>
   messageRef.current?.enqueueSnackbar(message, { variant: "default", ...(option || {}) });
 
-const info = (message: SnackbarMessage, option?: OptionsObject) =>
+const info = (message: SnackbarMessage, option?: MessageOptions) =>
   messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: "info" });
 
-const warning = (message: SnackbarMessage, option?: OptionsObject) =>
+const warning = (message: SnackbarMessage, option?: MessageOptions) =>
   messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: "warning" });
 
-const success = (message: SnackbarMessage, option?: OptionsObject) =>
+const success = (message: SnackbarMessage, option?: MessageOptions) =>
   messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: "success" });
 
-const error = (message: SnackbarMessage, option?: OptionsObject) =>
+const error = (message: SnackbarMessage, option?: MessageOptions) =>
   messageRef.current?.enqueueSnackbar(message, { ...(option || {}), variant: "error" });
 
 const destroy = () => messageRef.current?.closeSnackbar();
@@ -56,7 +55,7 @@ const defaultProps = {
   },
 };
 
-const MessageBox: React.FC<MessageBoxProps> = (props: MessageBoxProps) => {
+const MessageBox: FC<MessageBoxProps> = (props: MessageBoxProps) => {
   const { children, dense, responsive = true, breakpoint = "md", ...restProps } = props;
   const theme = useTheme();
   const down = useMediaQuery(theme.breakpoints.down(breakpoint));
@@ -73,4 +72,4 @@ const MessageBox: React.FC<MessageBoxProps> = (props: MessageBoxProps) => {
   );
 };
 
-export { messageRef, message, MessageBox, MessageBoxProps, useMessage };
+export { messageRef, message, MessageBox, type MessageBoxProps, type MessageOptions, useMessage };

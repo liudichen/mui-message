@@ -1,7 +1,5 @@
-import React from 'react';
+import { createContext } from "react";
 
-import { MessageContext } from './interface';
+import type { MessageContext } from "./interface";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export default React.createContext<MessageContext>();
+export const MessageBoxContext = createContext<MessageContext>(undefined);

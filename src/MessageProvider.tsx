@@ -1,15 +1,7 @@
-import React from 'react';
+import type { ReactNode } from "react";
 
-import MessageContext from './MessageContext';
+import { MessageBoxContext } from "./MessageContext";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const MessageProvider = ({ message, children }) => {
-  return (
-    <MessageContext.Provider value={message} >
-      {children}
-    </MessageContext.Provider>
-  );
+export const MessageProvider = ({ message, children }: { children?: ReactNode; message: any }) => {
+  return <MessageBoxContext.Provider value={message}>{children}</MessageBoxContext.Provider>;
 };
-
-export default MessageProvider;
